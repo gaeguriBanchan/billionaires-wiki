@@ -12,7 +12,7 @@ export default function Riches({
   return (
     <div className={styles.rich}>
       <div className={styles.box}>
-        <Link className={styles.link} href={`/person/${id}`}>
+        <Link prefetch className={styles.link} href={`/person/${id}`}>
           <img className={styles.img} src={squareImage} alt={id} />
           <h2 className={styles.name}>{name}</h2>
           <h3 className={styles.info}>
