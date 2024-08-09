@@ -8,15 +8,20 @@ export default function Navigation() {
   const path = usePathname();
   return (
     <nav className={styles.nav}>
-      <div className={styles.box}>
+      {/* <div className={styles.box}>
         {path === '/' ? (
           <Link href="/" className={styles.link}>
             Billionaires-Wiki
           </Link>
         ) : (
-          <Link href="/">Home</Link>
+          <Link href="/" className={styles.link}>
+            Billionaires-Wiki
+          </Link>
         )}
-      </div>
+      </div> */}
+      <Link href="/" className={styles.link}>
+        Billionaires-Wiki
+      </Link>
     </nav>
   );
 }

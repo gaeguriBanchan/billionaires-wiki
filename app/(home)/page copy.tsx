@@ -1,14 +1,12 @@
 import { Metadata } from 'next';
 import { API_URL } from '@/app/api';
 import styles from './home.module.css';
-import Link from 'next/link';
-import Riches from '@/components/riches';
 
 export const metadata: Metadata = {
   title: 'The rich',
 };
 
-export interface IRiches {
+interface IRiches {
   id: string;
   name: string;
   squareImage: string;
@@ -25,19 +23,20 @@ async function getBillionaires() {
 
 export default async function Home() {
   const riches: IRiches[] = await getBillionaires();
+  console.log(riches.length);
 
   return (
     <div className={styles.container}>
+      <div className={styles.title}>Riches</div>
       <h1 className={styles.riches}>
-        {riches.slice(0, 60).map((rich) => (
-          <Riches
-            key={rich.id}
-            id={rich.id}
-            industries={rich.industries}
-            name={rich.name}
-            netWorth={rich.netWorth}
-            squareImage={rich.squareImage}
-          />
+        {riches.slice(0, 5).map((rich) => (
+          <div className={styles.rich} key={rich.id}>
+            {/* <img src={rich.squareImage} alt={rich.id} /> */}
+            <h2>{rich.name}</h2>
+            <h3>
+              {rich.netWorth} / {rich.industries}
+            </h3>
+          </div>
         ))}
       </h1>
     </div>
