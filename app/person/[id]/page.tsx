@@ -28,7 +28,7 @@ export interface IPerson {
   name: string;
   country: string;
   industries: string[];
-  financialAssets: IAssets[];
+  financialAssets?: IAssets[];
   thumbnail: string;
   squareImage: string;
   bio: string[];
@@ -69,11 +69,13 @@ export default async function Rich({ params: { id } }: IParams) {
           squareImage={person.squareImage}
         />
       </Suspense>
-      <Suspense
-        fallback={<h1 className={styles.loading}>Loading AssetsInfo</h1>}
-      >
-        <Assets id={id} />
-      </Suspense>
+      {person.financialAssets ? (
+        <Suspense
+          fallback={<h1 className={styles.loading}>Loading AssetsInfo</h1>}
+        >
+          <Assets id={id} />
+        </Suspense>
+      ) : null}
     </div>
   );
 }
