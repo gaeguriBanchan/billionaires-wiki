@@ -10,7 +10,7 @@ export default async function Assets({ id }: { id: string }) {
         {person.financialAssets.map((asset, index) => (
           <div className={styles.asset} key={index}>
             <span>Ticker: {asset.ticker}</span>
-            <span>Shares: {asset.numberOfShares}</span>
+            <span>Shares: {asset.numberOfShares.toLocaleString()}</span>
             {asset.exerciseOptionPrice ? (
               <span>Exercise Price: ${asset.exerciseOptionPrice}</span>
             ) : null}
